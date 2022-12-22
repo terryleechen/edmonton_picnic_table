@@ -1,23 +1,82 @@
 
 pub struct Database {
     tables: Vec<Table>,
+    table_type_table: Vec<String>,
+    surface_material_table: Vec<String>,
+    structural_material_table: Vec<String>,
 }
 
 impl Database {
     pub fn new() -> Database {
-        Database {tables: Vec::new() }
+        Database {
+            tables: Vec::new(),
+            table_type_table: Vec::new(),
+            surface_material_table: Vec::new(),
+            structural_material_table: Vec::new(),
+        }
     }
 
-    pub fn get_length(&self) -> usize {
+    pub fn get_tables_length(&self) -> usize {
         self.tables.len()
+    }
+
+    pub fn get_table_type_table_length(&self) -> usize {
+        self.table_type_table.len()
+    }
+
+    pub fn get_surface_material_table_length(&self) -> usize {
+        self.surface_material_table.len()
+    }
+
+    pub fn get_structural_material_table_length(&self) -> usize {
+        self.structural_material_table.len()
     }
 
     pub fn add_table(&mut self, table: Table) {
         self.tables.push(table);
     }
 
+    pub fn add_table_type(&mut self, table_type: String) {
+        self.table_type_table.push(table_type);
+    }
+
+    pub fn add_surface_material(&mut self, surface_material: String) {
+        self.surface_material_table.push(surface_material);
+    }
+
+    pub fn add_structural_material(&mut self, structural_material: String) {
+        self.structural_material_table.push(structural_material);
+    }
+
+    pub fn cleanup(&mut self) {
+        self.table_type_table.sort();
+        self.table_type_table.dedup();
+        self.surface_material_table.sort();
+        self.surface_material_table.dedup();
+        self.structural_material_table.sort();
+        self.structural_material_table.dedup();
+    }
+
     pub fn get_table(&mut self, index: usize) -> &Table {
         &self.tables[index]
+    }
+
+    pub fn list_table_type(&mut self) {
+        for table_type in &self.table_type_table {
+            println!("table_type: {}", table_type);
+        }
+    }
+
+    pub fn list_surface_material(&mut self) {
+        for surface_material in &self.surface_material_table {
+            println!("surface_material: {}", surface_material);
+        }
+    }
+
+    pub fn list_structural_material(&mut self) {
+        for structural_material in &self.structural_material_table {
+            println!("structural_material: {}", structural_material);
+        }
     }
 
     pub fn count_entries(&self, table_type: String) -> i32 {
@@ -30,19 +89,11 @@ impl Database {
         count
     }
 
-    //editTableEntry(Db,tableID,memberName, newValue)&
+    // sort_by_member??
+
     pub fn edit_table_entry(&mut self, table_id: i32, table_type: String, member_name: String) {
         for table in &mut self.tables {
             if table.id == table_id {
-                println!("{}", table.id);
-                // if table.table_type == table_type {
-                //     table.set_table_type(member_name.to_string());
-                // }else if table.surface_material == table_type {
-                //     table.set_surface_material(member_name.to_string());
-                // } else if table.structural_material == table_type {
-                //     table.set_structural_material(member_name.to_string());
-                // }
-
                 match table_type.as_ref() {
                     "Square Picnic Table" => table.set_table_type(member_name.to_string()),
                     "surface_material" => table.set_surface_material(member_name.to_string()),
@@ -50,6 +101,30 @@ impl Database {
                     _ => println!("No match"),
                 }
             }
+        }
+    }
+
+    pub fn report_by_ward(&self) {
+        let mut wards: Vec<String> = Vec::new();
+        for table in &self.tables {
+            wards.push(table.ward.to_string());
+        }
+        wards.sort();
+        wards.dedup();
+        for ward in wards {
+            println!("Ward: {}", ward);
+        }
+    }
+
+    pub fn report_by_neighbourhood(&self) {
+        let mut neighbourhoods: Vec<String> = Vec::new();
+        for table in &self.tables {
+            neighbourhoods.push(table.neighbourhood_name.to_string());
+        }
+        neighbourhoods.sort();
+        neighbourhoods.dedup();
+        for neighbourhood in neighbourhoods {
+            println!("Neighbourhood: {}", neighbourhood);
         }
     }
 }

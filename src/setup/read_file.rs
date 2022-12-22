@@ -31,7 +31,7 @@ where
         let mut table = Table::new();
 
         let mut _j = 0;
-        for (j,info) in line.enumerate() {
+        for (j, info) in line.enumerate() {
             //println!("info: {}", info);
 
             match j {
@@ -50,7 +50,15 @@ where
                 12 => table.set_geometry_point(info.to_string()),
                 _ => println!("Error setting table info"),
             }
+
+            match j {
+                1 => db.add_table_type(info.to_string()),
+                2 => db.add_surface_material(info.to_string()),
+                3 => db.add_structural_material(info.to_string()),                
+                _ => (),
+            }
        }
        db.add_table(table);
     }
+    db.cleanup();
 }
