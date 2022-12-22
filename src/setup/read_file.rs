@@ -30,10 +30,9 @@ where
         let line = line.split(',');
         let mut table = Table::new();
 
-
         let mut _j = 0;
         for (j,info) in line.enumerate() {
-            println!("info: {}", info);
+            //println!("info: {}", info);
 
             match j {
                 0 => table.set_id(info.parse::<i32>().unwrap()),
@@ -49,13 +48,9 @@ where
                 10 => table.set_location_lat(info.to_string()),
                 11 => table.set_location_long(info.to_string()),
                 12 => table.set_geometry_point(info.to_string()),
-                _ => println!("Error"),
+                _ => println!("Error setting table info"),
             }
        }
        db.add_table(table);
-
     }
-
-    //println!(" db len {}",db.get_length());
-
 }

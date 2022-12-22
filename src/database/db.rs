@@ -31,11 +31,24 @@ impl Database {
     }
 
     //editTableEntry(Db,tableID,memberName, newValue)&
-    pub fn editTableEntry(&self, table_id: i32, member_name: String, new_value: String) {
-        for table in &self.tables {
-            if table.get_id() == table_id {
-                
-                //println!("{}", table.get_table_type());
+    pub fn edit_table_entry(&mut self, table_id: i32, table_type: String, member_name: String) {
+        for table in &mut self.tables {
+            if table.id == table_id {
+                println!("{}", table.id);
+                // if table.table_type == table_type {
+                //     table.set_table_type(member_name.to_string());
+                // }else if table.surface_material == table_type {
+                //     table.set_surface_material(member_name.to_string());
+                // } else if table.structural_material == table_type {
+                //     table.set_structural_material(member_name.to_string());
+                // }
+
+                match table_type.as_ref() {
+                    "Square Picnic Table" => table.set_table_type(member_name.to_string()),
+                    "surface_material" => table.set_surface_material(member_name.to_string()),
+                    "structural_material" => table.set_structural_material(member_name.to_string()),
+                    _ => println!("No match"),
+                }
             }
         }
     }
