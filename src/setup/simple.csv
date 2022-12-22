@@ -1,0 +1,3 @@
+Id,Table Type,Surface Material,Structural Material,Street / Avenue,Neighbourhood Id,Neighbourhood Name,Ward,Latitude,Longitude,Location,Geometry Point
+10846,Square Picnic Table,Wood,Aggregate,81 STREET NW,6320,IDYLWYLDE,Ward Métis,53.52328787,-113.4515708,"(53.52328786931638, -113.45157083212658)",POINT (-113.45157083212658 53.52328786931638)
+19102,Square Picnic Table,Wood,Aggregate,42 AVENUE NW,6760,TWEDDLE PLACE,Ward Karhiio,53.47717778,-113.4563818,"(53.47717778004791, -113.45638184763084)",POINT (-113.45638184763084 53.47717778004791)
