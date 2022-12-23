@@ -4,10 +4,9 @@ mod database;
 fn main() {
     // create a new database
     let mut db = database::db::Database::new();
-    
-    //setup::read_file::read_lines("setup/simple.csv",&mut db);
+
     setup::read_file::read_lines("setup/full.csv",&mut db);
-   
+
     println!("There are {} picnic tables!", &db.get_tables_length());
     db.edit_table_entry(10846, "Square Picnic Table".to_string(), "new_value".to_string());
     println!("The id {} table is a {}", &db.get_table(0).get_id(), &db.get_table(0).get_table_type());
@@ -20,5 +19,5 @@ fn main() {
     db.list_table_type();
     db.list_surface_material();
     db.list_structural_material();
-    
+
 }
