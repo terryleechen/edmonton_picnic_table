@@ -15,7 +15,8 @@ where
     for line in lines {
         let line = line?;
         let table_info = line.split(',').collect::<Vec<&str>>();
-        db.add_table_type(table_info[0].to_owned());
+        
+        db.add_table_type(table_info[1].to_owned());
         db.add_surface_material(table_info[2].to_owned());
         db.add_structural_material(table_info[3].to_owned());
         db.add_table(Table::from(table_info));

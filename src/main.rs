@@ -7,7 +7,7 @@ fn main() {
     // create a new database
     let mut db = database::db::Database::new();
 
-    if let Err(err) = read_lines("setup/full.csv",&mut db){
+    if let Err(err) = read_lines("./src/setup/full.csv", &mut db){
         panic!("Error occurred on read: {}", err);
     }
 
@@ -23,5 +23,4 @@ fn main() {
     db.list_table_type();
     db.list_surface_material();
     db.list_structural_material();
-
 }

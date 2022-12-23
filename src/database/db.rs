@@ -129,6 +129,7 @@ impl Database {
     }
 }
 
+#[allow(dead_code)]
 pub struct Table {
     id: i32,
     table_type: String,
@@ -145,6 +146,7 @@ pub struct Table {
     geometry_point: String,
 }
 
+#[allow(dead_code)]
 impl Table {
     pub fn new() -> Table {
         Table {
@@ -163,6 +165,7 @@ impl Table {
             longitude: 0.0,
         }
     }
+    
     pub fn from(table_info: Vec<&str>) -> Table {
         Table {
             id: table_info[0].parse().unwrap(),
@@ -181,10 +184,6 @@ impl Table {
         }
     }
 
-    pub fn set_id(&mut self, id: i32) {
-        self.id = id;
-    }
-
     pub fn set_table_type(&mut self, table_type: String) {
         self.table_type = table_type;
     }
@@ -197,42 +196,6 @@ impl Table {
         self.structural_material = structural_material;
     }
 
-    pub fn set_street_avenue(&mut self, street_aveenue: String) {
-        self.street_avenue = street_aveenue;
-    }
-
-    pub fn set_neighbourhood_id(&mut self, neighbourhood_id: i32) {
-        self.neighbourhood_id = neighbourhood_id;
-    }
-
-    pub fn set_neighbourhood_name(&mut self, neighbourhood_name: String) {
-        self.neighbourhood_name = neighbourhood_name;
-    }
-
-    pub fn set_ward(&mut self, ward: String) {
-        self.ward = ward;
-    }
-
-    pub fn set_latitude(&mut self, latitude: f64) {
-        self.latitude = latitude;
-    }
-
-    pub fn set_longitude(&mut self, longitude: f64) {
-        self.longitude = longitude;
-    }
-
-    pub fn set_location_lat(&mut self, location_lat: String) {
-        self.location_lat = location_lat;
-    }
-
-    pub fn set_location_long(&mut self, location_long: String) {
-        self.location_long = location_long;
-    }
-
-    pub fn set_geometry_point(&mut self, geometry_point: String) {
-        self.geometry_point = geometry_point;
-    }
-
     pub fn get_id(&self) -> i32 {
         self.id
     }
@@ -241,4 +204,3 @@ impl Table {
         &self.table_type
     }
 }
-
