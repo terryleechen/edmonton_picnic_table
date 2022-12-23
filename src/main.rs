@@ -1,3 +1,5 @@
+use crate::setup::read_file::read_lines;
+
 mod setup;
 mod database;
 
@@ -5,7 +7,9 @@ fn main() {
     // create a new database
     let mut db = database::db::Database::new();
 
-    setup::read_file::read_lines("setup/full.csv",&mut db);
+    if let Err(err) = read_lines("setup/full.csv",&mut db){
+        println!("Error occurred on read: {}", err);
+    }
 
     println!("There are {} picnic tables!", &db.get_tables_length());
     db.edit_table_entry(10846, "Square Picnic Table".to_string(), "new_value".to_string());
