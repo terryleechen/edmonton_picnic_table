@@ -39,7 +39,7 @@ where
                 1 => table.set_table_type(info.to_string()),
                 2 => table.set_surface_material(info.to_string()),
                 3 => table.set_structural_material(info.to_string()),
-                4 => table.set_street_aveenue(info.to_string()),
+                4 => table.set_street_avenue(info.to_string()),
                 5 => table.set_neighbourhood_id(info.parse::<i32>().unwrap()),
                 6 => table.set_neighbourhood_name(info.to_string()),
                 7 => table.set_ward(info.to_string()),

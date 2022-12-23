@@ -7,11 +7,8 @@ fn main() {
     
     //setup::read_file::read_lines("setup/simple.csv",&mut db);
     setup::read_file::read_lines("setup/full.csv",&mut db);
-    
    
     println!("There are {} picnic tables!", &db.get_tables_length());
-    //println!(" id {}", &db.get_table(0).get_id());
-    //println!("{}", &db.count_entries("Square Picnic Table".to_string()));
     db.edit_table_entry(10846, "Square Picnic Table".to_string(), "new_value".to_string());
     println!("The id {} table is a {}", &db.get_table(0).get_id(), &db.get_table(0).get_table_type());
     println!("There are {} Square Picnic Table", db.count_entries("Square Picnic Table".to_string()));

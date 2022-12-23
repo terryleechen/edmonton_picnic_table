@@ -144,8 +144,6 @@ pub struct Table {
     location_lat: String,
     location_long: String,
     geometry_point: String,
-
-
 }
 
 impl Table {
@@ -183,7 +181,7 @@ impl Table {
         self.structural_material = structural_material;
     }
 
-    pub fn set_street_aveenue(&mut self, street_aveenue: String) {
+    pub fn set_street_avenue(&mut self, street_aveenue: String) {
         self.street_aveenue = street_aveenue;
     }
 
