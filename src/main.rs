@@ -8,7 +8,7 @@ fn main() {
     let mut db = database::db::Database::new();
 
     if let Err(err) = read_lines("setup/full.csv",&mut db){
-        println!("Error occurred on read: {}", err);
+        panic!("Error occurred on read: {}", err);
     }
 
     println!("There are {} picnic tables!", &db.get_tables_length());
