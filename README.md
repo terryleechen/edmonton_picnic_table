@@ -12,54 +12,56 @@ Database module:
 
 methods
 
-- New
-- Get_tables_length
-- Get_table_type_table_length
-- Get_surface_material_table_length
-- Get_structural_material_table_length
-- Add_table
-- Add_table_type
-- Add_surface_material
-- Add_structural_material
-- Cleanup
-  Get_table
-  List_table_type
-  List_surface_material
-  List_structural_material
-  Count_entries
-  Edit_table_entry
-  Report_by_ward
-  Report_by_neighbourhood
-  Sort_by_member - not implemented
+- new
+- get_tables_length
+- get_table_type_table_length
+- get_surface_material_table_length
+- get_structural_material_table_length
+- add_table
+- add_table_type
+- add_surface_material
+- add_structural_material
+- cleanup
+- get_table
+- list_table_type
+- list_surface_material
+- list_structural_material
+- count_entries
+- edit_table_entry
+- report_by_ward
+- report_by_neighbourhood
+- sort_by_member - not implemented
 
 Table module:
-id: i32
-table_type: String
-surface_material: String
-structural_material: String
-street_aveenue: String
-neighbourhood_id: i32
-neighbourhood_name: String
-ward: String
-latitude: f64
-longitude: f64
-location_lat: String
-location_long: String
-geometry_point: String
 
-Methods
-New
-Set_id
-Set_table_type
-Set_surface_material
-Set_street_avenue
-Set_neighbourhood_id
-Set_neighbourhood_name
-Set_ward
-Set_latitude
-Set_longitude
-Set_location_lat
-Set_location_long
-Set_geometry_point
-Get_id
-get_table_type
+- id: i32
+- table_type: String
+- surface_material: String
+- structural_material: String
+- street_aveenue: String
+- neighbourhood_id: i32
+- neighbourhood_name: String
+- ward: String
+- latitude: f64
+- longitude: f64
+- location_lat: String
+- location_long: String
+- geometry_point: String
+
+methods
+
+- new
+- set_id
+- set_table_type
+- set_surface_material
+- set_street_avenue
+- set_neighbourhood_id
+- set_neighbourhood_name
+- set_ward
+- set_latitude
+- set_longitude
+- set_location_lat
+- set_location_long
+- set_geometry_point
+- get_id
+- get_table_type
