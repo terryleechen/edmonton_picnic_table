@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 
 pub struct Database {
     tables: Vec<Table>,
@@ -104,15 +105,14 @@ impl Database {
         }
     }
 
-    pub fn report_by_ward(&self) {
-        let mut wards: Vec<String> = Vec::new();
+    pub fn report_by_ward(&mut self) {
+        self.tables.sort_by(|a, b| a.ward.cmp(&b.ward));
+        let mut seen = HashSet::new();
         for table in &self.tables {
-            wards.push(table.ward.to_string());
-        }
-        wards.sort();
-        wards.dedup();
-        for ward in wards {
-            println!("Ward: {}", ward);
+            if !seen.contains(&table.ward) {
+                println!("Ward: {}", table.ward);
+                seen.insert(&table.ward);
+            }
         }
     }
 
@@ -128,14 +128,13 @@ impl Database {
         }
     }
 }
-    
 
 pub struct Table {
     id: i32,
     table_type: String,
     surface_material: String,
     structural_material: String,
-    street_aveenue: String,
+    street_avenue: String,
     neighbourhood_id: i32,
     neighbourhood_name: String,
     ward: String,
@@ -153,7 +152,7 @@ impl Table {
             table_type: String::new(),
             surface_material: String::new(),
             structural_material: String::new(),
-            street_aveenue: String::new(),
+            street_avenue: String::new(),
             neighbourhood_id: 0,
             neighbourhood_name: String::new(),
             ward: String::new(),
@@ -162,6 +161,23 @@ impl Table {
             location_long: String::new(),
             geometry_point: String::new(),
             longitude: 0.0,
+        }
+    }
+    pub fn from(table_info: Vec<&str>) -> Table {
+        Table {
+            id: table_info[0].parse().unwrap(),
+            table_type: table_info[1].to_owned(),
+            surface_material: table_info[2].to_owned(),
+            structural_material: table_info[3].to_owned(),
+            street_avenue: table_info[4].to_owned(),
+            neighbourhood_id: table_info[5].parse().unwrap(),
+            neighbourhood_name: table_info[6].to_owned(),
+            ward: table_info[7].to_owned(),
+            latitude: table_info[8].parse().unwrap(),
+            longitude: table_info[9].parse().unwrap(),
+            location_lat: table_info[10].to_owned(),
+            location_long: table_info[11].to_owned(),
+            geometry_point: table_info[12].to_owned(),
         }
     }
 
@@ -182,7 +198,7 @@ impl Table {
     }
 
     pub fn set_street_avenue(&mut self, street_aveenue: String) {
-        self.street_aveenue = street_aveenue;
+        self.street_avenue = street_aveenue;
     }
 
     pub fn set_neighbourhood_id(&mut self, neighbourhood_id: i32) {
@@ -197,7 +213,7 @@ impl Table {
         self.ward = ward;
     }
 
-    pub fn  set_latitude(&mut self, latitude: f64) {
+    pub fn set_latitude(&mut self, latitude: f64) {
         self.latitude = latitude;
     }
 
@@ -225,3 +241,4 @@ impl Table {
         &self.table_type
     }
 }
+
